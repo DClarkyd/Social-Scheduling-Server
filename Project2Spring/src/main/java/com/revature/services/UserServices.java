@@ -23,6 +23,10 @@ public class UserServices {
 		return ur.findById(id).get();
 	}
 	
+//	public List<AppUser> findFriend(int id){
+//		return ur.findByFriend(id).get();
+//	}
+	
 	public AppUser login(String username, String password) {
 		return ur.findByUsernameAndPassword(username, password);
 	}

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +35,9 @@ public class AppUser {
 	@ManyToMany
     @JoinTable(name = "user_has_interest", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "interest_id"))
     private List<Interests> interests;
+	
+	@OneToMany(mappedBy = "userId")
+	private List<Friends> friends;
 
 	public AppUser() {
 		super();
@@ -41,7 +45,7 @@ public class AppUser {
 	}
 
 	public AppUser(int id, String username, String password, String firstName, String lastName, int age, String email,
-			List<Interests> interests) {
+			List<Interests> interests, List<Friends> friends) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -51,6 +55,7 @@ public class AppUser {
 		this.age = age;
 		this.email = email;
 		this.interests = interests;
+		this.friends = friends;
 	}
 
 	public int getId() {
@@ -117,6 +122,14 @@ public class AppUser {
 		this.interests = interests;
 	}
 
+	public List<Friends> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<Friends> friends) {
+		this.friends = friends;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -124,6 +137,7 @@ public class AppUser {
 		result = prime * result + age;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((interests == null) ? 0 : interests.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -153,6 +167,11 @@ public class AppUser {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
+		if (friends == null) {
+			if (other.friends != null)
+				return false;
+		} else if (!friends.equals(other.friends))
+			return false;
 		if (id != other.id)
 			return false;
 		if (interests == null) {
@@ -181,7 +200,9 @@ public class AppUser {
 	@Override
 	public String toString() {
 		return "AppUser [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", age=" + age + ", email=" + email + ", interests=" + interests + "]";
+				+ ", lastName=" + lastName + ", age=" + age + ", email=" + email + ", interests=" + interests
+				+ ", friends=" + friends + "]";
 	}
-		
+
+	
 }
