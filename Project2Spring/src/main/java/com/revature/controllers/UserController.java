@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.model.AppUser;
 import com.revature.services.UserServices;
 
-//@CrossOrigin(origins = "http://localhost:8080/userse", maxAge = 3600)
 @RestController
 @RequestMapping("users")
 public class UserController {
