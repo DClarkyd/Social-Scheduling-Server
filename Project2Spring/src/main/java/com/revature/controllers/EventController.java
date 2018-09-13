@@ -1,3 +1,5 @@
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 //package com.revature.controllers;
 //
 //import java.util.ArrayList;
@@ -20,6 +22,7 @@
 //
 //@RestController
 //@RequestMapping("users/interests")
+//@CrossOrigin
 //public class EventController {
 //
 //	@Autowired
