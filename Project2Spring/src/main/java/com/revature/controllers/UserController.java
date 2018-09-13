@@ -51,7 +51,7 @@ public class UserController {
 	
 	@PostMapping
 	public ResponseEntity<AppUser> save(@RequestBody AppUser u) {
-		u.setId(1);
+
 		ResponseEntity<AppUser> RE = new ResponseEntity<AppUser>(u, HttpStatus.CREATED);
 
 		return RE;

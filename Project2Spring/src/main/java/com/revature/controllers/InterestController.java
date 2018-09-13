@@ -28,7 +28,7 @@ public class InterestController {
 	
 	@PostMapping
 	public ResponseEntity<Interests> save(@RequestBody Interests i) {
-		i.setId(1);
+
 		ResponseEntity<Interests> RE = new ResponseEntity<Interests>(i, HttpStatus.CREATED);
 
 		return RE;
