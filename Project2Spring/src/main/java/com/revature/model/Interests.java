@@ -18,6 +18,7 @@ public class Interests {
 	@Column(name = "interest_name")
 	private String interest;
 
+	
 	public Interests() {
 		super();
 		// TODO Auto-generated constructor stub

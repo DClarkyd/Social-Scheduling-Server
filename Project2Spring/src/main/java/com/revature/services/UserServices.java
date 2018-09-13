@@ -1,7 +1,6 @@
 package com.revature.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +29,9 @@ public class UserServices {
 
 	public AppUser save(AppUser u) {
 		return ur.saveAndFlush(u);
+	}
+
+	public List<AppUser> findByInterestsId(int id) {
+		return ur.findByInterestsId(id);
 	}
 }

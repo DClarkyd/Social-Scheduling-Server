@@ -50,6 +50,11 @@ public class UserController {
 		return us.save(u);
 	}
 	
+	@GetMapping("interests/{id}")
+	public List <AppUser> interestWithId(@PathVariable int id) {
+		return us.findByInterestsId(id);
+	}
+	
 	@PostMapping
 	public ResponseEntity<AppUser> save(@RequestBody AppUser u) {
 
