@@ -42,6 +42,7 @@ public class UserController {
 	}
 	
 	@Transactional
+	@CrossOrigin
 	@PostMapping("{id}/addInterest")
 	public AppUser addInterest(@PathVariable int id, @RequestBody Interests interest) {
 		AppUser user = us.addInterest(id, interest);
@@ -50,6 +51,7 @@ public class UserController {
 	}
 	
 	@Transactional
+	@CrossOrigin
 	@PostMapping("{id}/addFriend")
 	public AppUser addUser(@PathVariable int id, @RequestBody AppUser friends) {
 		AppUser user = us.addFriend(id, friends);
@@ -68,6 +70,7 @@ public class UserController {
 		return us.save(u);
 	}
 	
+	@CrossOrigin
 	@GetMapping("interests/{id}")
 	public List <AppUser> interestWithId(@PathVariable int id) {
 		return us.findByInterestsId(id);
