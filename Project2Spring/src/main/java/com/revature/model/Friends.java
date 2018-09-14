@@ -14,6 +14,7 @@ public class Friends implements Serializable {
      * 
      */
     private static final long serialVersionUID = -3779131646759562248L;
+    
 //      @Id
     @Column(name = "user_id")
     private int userId;
