@@ -48,6 +48,13 @@ public class UserController {
 		
 		return user;
 	}
+	
+	@Transactional
+	@PostMapping("{id}/addFriend")
+	public AppUser addUser(@PathVariable int id, @RequestBody AppUser friends) {
+		AppUser user = us.addFriend(id, friends);
+		return user;
+	}
 
 	@CrossOrigin
 	@PostMapping("login")

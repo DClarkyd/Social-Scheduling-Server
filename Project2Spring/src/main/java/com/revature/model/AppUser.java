@@ -39,26 +39,13 @@ public class AppUser {
     @JoinTable(name = "user_has_interest", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "interest_id"))
     private List<Interests> interests;
 	
-	@OneToMany(mappedBy = "userId")
-	private List<Friends> friends;
+	@ManyToMany
+    @JoinTable(name = "user_has_friends", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
+    private List<AppUser> friends;
 
 	public AppUser() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public AppUser(int id, String username, String password, String firstName, String lastName, int age, String email,
-			List<Interests> interests, List<Friends> friends) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-		this.email = email;
-		this.interests = interests;
-		this.friends = friends;
 	}
 
 	public int getId() {
@@ -125,11 +112,11 @@ public class AppUser {
 		this.interests = interests;
 	}
 
-	public List<Friends> getFriends() {
+	public List<AppUser> getFriends() {
 		return friends;
 	}
 
-	public void setFriends(List<Friends> friends) {
+	public void setFriends(List<AppUser> friends) {
 		this.friends = friends;
 	}
 
