@@ -3,6 +3,8 @@ package com.revature.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.AppUser;
+import com.revature.model.Interests;
 import com.revature.services.UserServices;
 
 @RestController
@@ -35,6 +38,14 @@ public class UserController {
 	@GetMapping("{id}")
 	public AppUser findById(@PathVariable int id) {
 		AppUser user = us.findOne(id);
+		return user;
+	}
+	
+	@Transactional
+	@PostMapping("{id}/addInterest")
+	public AppUser addInterest(@PathVariable int id, @RequestBody Interests interest) {
+		AppUser user = us.addInterest(id, interest);
+		
 		return user;
 	}
 
