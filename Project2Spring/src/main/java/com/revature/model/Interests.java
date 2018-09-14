@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Entity
 @Table(name = "interests")
 
@@ -18,6 +21,7 @@ public class Interests {
 	@Column(name = "interest_name")
 	private String interest;
 
+	
 	public Interests() {
 		super();
 		// TODO Auto-generated constructor stub

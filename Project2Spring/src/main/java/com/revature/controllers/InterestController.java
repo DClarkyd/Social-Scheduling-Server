@@ -13,6 +13,7 @@ import com.revature.model.Interests;
 import com.revature.services.InterestServices;
 
 @RestController
+@CrossOrigin
 @RequestMapping("interests")
 public class InterestController {
 

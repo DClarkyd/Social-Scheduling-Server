@@ -3,6 +3,8 @@ package com.revature.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.AppUser;
+import com.revature.model.Interests;
 import com.revature.services.UserServices;
 
 @RestController
+@CrossOrigin
 @RequestMapping("users")
 public class UserController {
 
@@ -36,6 +40,23 @@ public class UserController {
 		AppUser user = us.findOne(id);
 		return user;
 	}
+	
+	@Transactional
+	@CrossOrigin
+	@PostMapping("{id}/addInterest")
+	public AppUser addInterest(@PathVariable int id, @RequestBody Interests interest) {
+		AppUser user = us.addInterest(id, interest);
+		
+		return user;
+	}
+	
+	@Transactional
+	@CrossOrigin
+	@PostMapping("{id}/addFriend")
+	public AppUser addUser(@PathVariable int id, @RequestBody AppUser friends) {
+		AppUser user = us.addFriend(id, friends);
+		return user;
+	}
 
 	@CrossOrigin
 	@PostMapping("login")
@@ -47,6 +68,24 @@ public class UserController {
 	@PostMapping("register")
 	public AppUser register(@RequestBody AppUser u) {
 		return us.save(u);
+	}
+	
+	@CrossOrigin
+	@GetMapping("interests/{id}")
+	public List <AppUser> interestWithId(@PathVariable int id) {
+		return us.findByInterestsId(id);
+	}
+	
+	@GetMapping("{id}/friends")
+	public List<AppUser> findFriends(@PathVariable int id) {
+		AppUser user = us.findOne(id);
+		return user.getFriends();
+	}
+	
+	@GetMapping("{id}/interests")
+	public List<Interests> findInterests(@PathVariable int id) {
+		AppUser user = us.findOne(id);
+		return user.getInterests();
 	}
 	
 	@PostMapping
