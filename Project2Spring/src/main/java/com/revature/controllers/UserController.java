@@ -75,9 +75,7 @@ public class UserController {
 	
 	@PostMapping
 	public ResponseEntity<AppUser> save(@RequestBody AppUser u) {
-
-		ResponseEntity<AppUser> RE = new ResponseEntity<AppUser>(u, HttpStatus.CREATED);
-
+		ResponseEntity<AppUser> RE = new ResponseEntity<AppUser>(u, HttpStatus.CREATED);    
 		return RE;
 	}
 }

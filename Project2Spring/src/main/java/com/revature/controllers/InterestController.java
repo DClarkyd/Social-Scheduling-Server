@@ -20,7 +20,6 @@ public class InterestController {
 	@Autowired
 	private InterestServices is;
 	
-
 	@CrossOrigin
 	@PostMapping("create")
 	public Interests create(@RequestBody Interests i) {
