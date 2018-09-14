@@ -10,10 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Entity
@@ -25,6 +26,7 @@ public class AppUser {
 	@Column(name = "user_id")
 	private int id;
 	private String username;
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	@Column(name = "user_first_name")
 	private String firstName;
@@ -63,7 +65,8 @@ public class AppUser {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
+	
+	
 	public String getPassword() {
 		return password;
 	}
