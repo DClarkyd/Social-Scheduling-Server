@@ -73,6 +73,18 @@ public class UserController {
 		return us.findByInterestsId(id);
 	}
 	
+	@GetMapping("{id}/friends")
+	public List<AppUser> findFriends(@PathVariable int id) {
+		AppUser user = us.findOne(id);
+		return user.getFriends();
+	}
+	
+	@GetMapping("{id}/interests")
+	public List<Interests> findInterests(@PathVariable int id) {
+		AppUser user = us.findOne(id);
+		return user.getInterests();
+	}
+	
 	@PostMapping
 	public ResponseEntity<AppUser> save(@RequestBody AppUser u) {
 
