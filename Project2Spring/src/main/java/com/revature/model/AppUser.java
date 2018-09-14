@@ -27,10 +27,7 @@ public class AppUser {
 	@Column(name = "user_id")
 	private int id;
 	private String username;
-<<<<<<< HEAD
-	
-=======
->>>>>>> 7948a3ef552e7342bf4a8f096f714e99f695153c
+
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	@Column(name = "user_first_name")
