@@ -20,6 +20,13 @@ public class UserServices {
 		return ur.findAll();
 	}
 	
+	public AppUser addFriend(int id, AppUser friends) {
+		AppUser u = ur.findById(id).get();
+		u.getFriends().add(friends);
+		ur.save(u);
+		return u;
+	}
+	
 	public AppUser addInterest(int id, Interests interest) {
 		AppUser u = ur.findById(id).get();
 		u.getInterests().add(interest);
