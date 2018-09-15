@@ -20,7 +20,7 @@ public class Event {
 	@Column(name = "event_name")
 	private String name;
 	@Column(name = "event_type")
-	private String type;
+	private String eventType;
 	@Column(name = "event_description")
 	private String description;
 	@Column(name = "event_start_date")
@@ -39,12 +39,12 @@ public class Event {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Event(int id, String name, String type, String description, String startDate, String endDate,
+	public Event(int id, String name, String eventType, String description, String startDate, String endDate,
 			String startTime, String endTime, String location, int authorId) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.type = type;
+		this.eventType = eventType;
 		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -65,11 +65,11 @@ public class Event {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
-		return type;
+	public String getEventType() {
+		return eventType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
 	}
 	public String getDescription() {
 		return description;
@@ -121,12 +121,12 @@ public class Event {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
+		result = prime * result + ((eventType == null) ? 0 : eventType.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 	@Override
@@ -155,6 +155,11 @@ public class Event {
 				return false;
 		} else if (!endTime.equals(other.endTime))
 			return false;
+		if (eventType == null) {
+			if (other.eventType != null)
+				return false;
+		} else if (!eventType.equals(other.eventType))
+			return false;
 		if (id != other.id)
 			return false;
 		if (location == null) {
@@ -177,23 +182,14 @@ public class Event {
 				return false;
 		} else if (!startTime.equals(other.startTime))
 			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
-			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", type=" + type + ", description=" + description + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", location=" + location + ", authorId=" + authorId + "]";
+		return "Event [id=" + id + ", name=" + name + ", eventType=" + eventType + ", description=" + description
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime="
+				+ endTime + ", location=" + location + ", authorId=" + authorId + "]";
 	}
-	
-	
 
-	
-
-	
+		
 }
