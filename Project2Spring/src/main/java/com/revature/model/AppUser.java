@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -26,6 +27,7 @@ public class AppUser {
 	@Column(name = "user_id")
 	private int id;
 	private String username;
+
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	@Column(name = "user_first_name")
@@ -39,11 +41,13 @@ public class AppUser {
 
 	@ManyToMany
     @JoinTable(name = "user_has_interest", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "interest_id"))
-    private List<Interests> interests;
+    @JsonIgnore
+	private List<Interests> interests;
 	
 	@ManyToMany
     @JoinTable(name = "user_has_friends", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
-    private List<AppUser> friends;
+    @JsonIgnore
+	private List<AppUser> friends;
 
 	public AppUser() {
 		super();
