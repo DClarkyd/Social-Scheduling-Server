@@ -1,19 +1,19 @@
-//package com.revature.services;
-//
-//import java.util.List;
-//
-//import com.revature.model.AppUser;
-//
-//public class EventServices {
-//
-//	public List<AppUser> findAll() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public AppUser save(AppUser u) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//}
+package com.revature.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.revature.model.Event;
+import com.revature.repos.EventRepo;
+
+@Service
+public class EventServices {
+
+	@Autowired
+	private EventRepo eventRepo;
+
+	public Event save(Event e) {
+		return eventRepo.saveAndFlush(e);
+	}
+	
+}
