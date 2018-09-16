@@ -17,9 +17,8 @@ public class EventServices {
 		return er.saveAndFlush(e);
 	}
 
-	public Event inviteUser(int id, AppUser friends) {
-		// TODO Auto-generated method stub
-		return null;
+	public Event inviteUser(Event e) {
+		return er.saveAndFlush(e);
 	}
 	
 }

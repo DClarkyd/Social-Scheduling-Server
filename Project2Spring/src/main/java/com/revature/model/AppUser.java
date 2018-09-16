@@ -47,7 +47,7 @@ public class AppUser {
 	@ManyToMany
     @JoinTable(name = "user_has_invitations", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
     @JsonIgnore
-	private List<Event> invitations;
+	private List<Event> events;
 	
 	@ManyToMany
     @JoinTable(name = "user_has_friends", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
@@ -60,7 +60,7 @@ public class AppUser {
 	}
 
 	public AppUser(int id, String username, String password, String firstName, String lastName, int age, String email,
-			List<Interests> interests, List<Event> invitations, List<AppUser> friends) {
+			List<Interests> interests, List<Event> events, List<AppUser> friends) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -70,7 +70,7 @@ public class AppUser {
 		this.age = age;
 		this.email = email;
 		this.interests = interests;
-		this.invitations = invitations;
+		this.events = events;
 		this.friends = friends;
 	}
 
@@ -138,12 +138,12 @@ public class AppUser {
 		this.interests = interests;
 	}
 
-	public List<Event> getInvitations() {
-		return invitations;
+	public List<Event> getEvents() {
+		return events;
 	}
 
-	public void setInvitations(List<Event> invitations) {
-		this.invitations = invitations;
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	public List<AppUser> getFriends() {
@@ -160,11 +160,11 @@ public class AppUser {
 		int result = 1;
 		result = prime * result + age;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((events == null) ? 0 : events.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((interests == null) ? 0 : interests.hashCode());
-		result = prime * result + ((invitations == null) ? 0 : invitations.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -187,6 +187,11 @@ public class AppUser {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (events == null) {
+			if (other.events != null)
+				return false;
+		} else if (!events.equals(other.events))
+			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
@@ -203,11 +208,6 @@ public class AppUser {
 			if (other.interests != null)
 				return false;
 		} else if (!interests.equals(other.interests))
-			return false;
-		if (invitations == null) {
-			if (other.invitations != null)
-				return false;
-		} else if (!invitations.equals(other.invitations))
 			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
@@ -231,6 +231,6 @@ public class AppUser {
 	public String toString() {
 		return "AppUser [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", age=" + age + ", email=" + email + ", interests=" + interests
-				+ ", invitations=" + invitations + ", friends=" + friends + "]";
+				+ ", events=" + events + ", friends=" + friends + "]";
 	}
 }

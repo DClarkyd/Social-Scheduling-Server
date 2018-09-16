@@ -46,8 +46,8 @@ public class UserServices {
 //	give someone an invitation
 	public AppUser addInvitation(int id, Event event) {
 		AppUser u = ur.findById(id).get();
-		u.getInvitations().add(event);
-		ur.saveAndFlush(u);
+		u.getEvents().add(event);
+		ur.save(u);
 		return u;
 	}
 
