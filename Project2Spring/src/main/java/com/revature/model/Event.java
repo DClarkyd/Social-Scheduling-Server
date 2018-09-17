@@ -1,12 +1,18 @@
 package com.revature.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) 
@@ -35,12 +41,19 @@ public class Event {
 	private String location;
 	@Column(name = "event_author_id")
 	private int authorId;
+	
+	@ManyToMany
+    @JoinTable(name = "event", joinColumns = @JoinColumn(name = "event_author_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    @JsonIgnore
+	private List<Event> events;
+
 	public Event() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public Event(int id, String name, String eventType, String description, String startDate, String endDate,
-			String startTime, String endTime, String location, int authorId) {
+			String startTime, String endTime, String location, int authorId, List<Event> events) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -52,67 +65,97 @@ public class Event {
 		this.endTime = endTime;
 		this.location = location;
 		this.authorId = authorId;
+		this.events = events;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getEventType() {
 		return eventType;
 	}
+
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getStartDate() {
 		return startDate;
 	}
+
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+
 	public String getEndDate() {
 		return endDate;
 	}
+
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+
 	public String getStartTime() {
 		return startTime;
 	}
+
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
+
 	public String getEndTime() {
 		return endTime;
 	}
+
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
+
 	public String getLocation() {
 		return location;
 	}
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
 	public int getAuthorId() {
 		return authorId;
 	}
+
 	public void setAuthorId(int authorId) {
 		this.authorId = authorId;
 	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,6 +165,7 @@ public class Event {
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
 		result = prime * result + ((eventType == null) ? 0 : eventType.hashCode());
+		result = prime * result + ((events == null) ? 0 : events.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -129,6 +173,7 @@ public class Event {
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -160,6 +205,11 @@ public class Event {
 				return false;
 		} else if (!eventType.equals(other.eventType))
 			return false;
+		if (events == null) {
+			if (other.events != null)
+				return false;
+		} else if (!events.equals(other.events))
+			return false;
 		if (id != other.id)
 			return false;
 		if (location == null) {
@@ -184,12 +234,13 @@ public class Event {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", eventType=" + eventType + ", description=" + description
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime="
-				+ endTime + ", location=" + location + ", authorId=" + authorId + "]";
+				+ endTime + ", location=" + location + ", authorId=" + authorId + ", events=" + events + "]";
 	}
 
-		
+	
 }

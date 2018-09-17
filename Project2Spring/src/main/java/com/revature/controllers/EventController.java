@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,14 +37,29 @@ public class EventController {
 	return es.save(e);
 	}
 	
-	//find all users
-		@GetMapping
-		public List<Event> findAll() {
-			System.out.println("finding all events");
-			List<Event> events = new ArrayList<>();
-			return es.findAll();
-		}
+	//Find by event id
+	@CrossOrigin
+	@GetMapping("{id}")
+	public Event findById(@PathVariable int id){
+		Event event = es.findOne(id);
+		return event;
+	}
 	
+	//find all users
+	@GetMapping
+	public List<Event> findAll() {
+		System.out.println("finding all events");
+		List<Event> events = new ArrayList<>();
+		return es.findAll();
+	}
+	
+	//Find Event by Author ID
+	@GetMapping("{id}/author")
+	public List<Event> eventAuthor(@PathVariable int id){
+		Event event = es.findOne(id);
+		return event.getEvents();
+	}
+
 	@PostMapping
 	public ResponseEntity<Interests> save(@RequestBody Interests i) {
 
