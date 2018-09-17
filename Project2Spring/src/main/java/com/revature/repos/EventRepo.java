@@ -8,4 +8,6 @@ import com.revature.model.Event;
 @Repository
 public interface EventRepo extends JpaRepository<Event, Integer>{
 
+	Event findByAuthorId(int id);
+
 }
