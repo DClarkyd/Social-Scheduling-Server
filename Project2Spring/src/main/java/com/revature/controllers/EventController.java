@@ -36,12 +36,20 @@ public class EventController {
 	return es.save(e);
 	}
 	
-	//find all users
+	//find all events
 		@GetMapping
 		public List<Event> findAll() {
 			System.out.println("finding all events");
 			List<Event> events = new ArrayList<>();
 			return es.findAll();
+		}
+		
+		//find event by id
+		@CrossOrigin
+		@GetMapping("{id}")
+		public Event findById(@PathVariable int id) {
+			Event event = es.findOne(id);
+			return event;
 		}
 	
 	@PostMapping

@@ -26,5 +26,9 @@ public class EventServices {
 	public List<Event> findAll() {
 		return er.findAll();
 	}
+
+	public Event findOne(int id) {
+		return er.getOne(id);
+	}
 	
 }
