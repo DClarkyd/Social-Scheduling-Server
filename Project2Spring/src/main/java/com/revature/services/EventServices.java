@@ -31,7 +31,7 @@ public class EventServices {
 		return er.getOne(id);
 	}
 
-	public Event findByAuthorId(int id) {
+	public List<Event> findByAuthorId(int id) {
 		return er.findByAuthorId(id);
 	}
 	

@@ -23,5 +23,9 @@ public class FriendServices {
     public Friends save(Friends f) {
         return fr.saveAndFlush(f);
     }
+
+	public void deleteById(int id) {
+		fr.deleteById(id);
+	}
     
 }
