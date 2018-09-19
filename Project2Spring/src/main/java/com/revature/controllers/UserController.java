@@ -70,10 +70,11 @@ public class UserController {
 	@Transactional
 	@CrossOrigin
 	@DeleteMapping("{id}/removeInterest")
-	public void removeInterest(@PathVariable int id, @RequestBody Interests interest) {
-		 us.removeInterestById(id, interest);
+	public AppUser removeInterest(@PathVariable int id, @RequestBody Interests interest) {
+		AppUser user = us.removeUsersInterest(id, interest);
 //		AppUser user = us.findOne(id);
 //		us.findByInterestIdAndUserId();
+		return user;
 	}
 
 	// changes interest id2 at the user id
