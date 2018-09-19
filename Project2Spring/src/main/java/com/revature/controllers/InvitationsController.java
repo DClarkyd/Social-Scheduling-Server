@@ -26,6 +26,7 @@ public class InvitationsController {
 	private InvitationsService is;
 
 	// Find All Users
+	@CrossOrigin
 	@GetMapping
 	public List<Invitations> findAll() {
 		System.out.println("Finding all Invitations");
@@ -39,7 +40,8 @@ public class InvitationsController {
 		Invitations invitations = is.findOne(id);
 		return invitations;
 	}
-
+	
+	@CrossOrigin
 	@GetMapping("event/{id}")
 	public List<Invitations> findEventInvitations(@PathVariable int id) {
 		List<Invitations> invitations = is.findByEventId(id);
@@ -47,6 +49,7 @@ public class InvitationsController {
 		return invitations;
 	}
 	
+	@CrossOrigin
 	//displays all of a user's event invitations
 	@GetMapping("user/{id}")
 	public List<Invitations> findUserInvitations(@PathVariable int id) {
@@ -54,6 +57,7 @@ public class InvitationsController {
 		return invitations;
 	}
 
+	@CrossOrigin
 	@GetMapping("event/{eventId}/status/{statusId}")
 	public List<Invitations> findAttendees(@PathVariable int eventId, @PathVariable int statusId) {
 		List<Invitations> invitations = is.findByEventAndStatusId(eventId, statusId);
