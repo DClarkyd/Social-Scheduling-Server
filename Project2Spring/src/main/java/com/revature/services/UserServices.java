@@ -60,9 +60,28 @@ public class UserServices {
 	}
 
 	//removes interest
-	public void removeInterestById(int id, Interests interest) {
+	public AppUser removeUsersInterest(int id, Interests interest) {
 		AppUser u = ur.findById(id).get();
-		u.getInterests().remove(interest);
+		List<Interests> userInterests = u.getInterests();
+		for (int i = 0; i < userInterests.size(); i++) {
+			if (interest.getId() == userInterests.get(i).getId()) {
+				u.getInterests().remove(i);
+			}
+		}
 		ur.save(u);
+		return u;
 	}
+	
+	//update a user
+	public AppUser updateUser(int id, AppUser u) {
+		AppUser userToUpdate = ur.getOne(id);
+		userToUpdate.setFirstName(u.getFirstName());
+		userToUpdate.setLastName(u.getLastName());
+		userToUpdate.setEmail(u.getEmail());
+		userToUpdate.setAge(u.getAge());
+		userToUpdate.setUsername(u.getUsername());
+		ur.save(userToUpdate);
+		return userToUpdate;
+	}
+	
 }
