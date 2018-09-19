@@ -94,7 +94,6 @@ public class UserController {
 		return user;
 	}
 
-
 	//lets you add a friend
 	@Transactional
 	@CrossOrigin

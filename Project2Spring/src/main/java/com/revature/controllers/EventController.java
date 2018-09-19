@@ -37,14 +37,6 @@ public class EventController {
 		return es.save(e);
 	}
 
-	// find all events
-	@GetMapping
-	public List<Event> findAll() {
-		System.out.println("finding all events");
-		List<Event> events = new ArrayList<>();
-		return es.findAll();
-	}
-
 	// find event by id
 	@CrossOrigin
 	@GetMapping("{id}")
@@ -53,14 +45,27 @@ public class EventController {
 		return event;
 	}
 
+<<<<<<< HEAD
 	
+=======
+	//find all events
+		@GetMapping
+		public List<Event> findAll() {
+			System.out.println("finding all events");
+			List<Event> events = new ArrayList<>();
+			return es.findAll();
+		}
+>>>>>>> 8358c4fe9aa6337eb58b37a7f407bc7ff9e6fcf0
 	
 	//Find Event by Author ID
 	@GetMapping("author/{id}")
 	public List<Event> eventAuthor(@PathVariable int id){
 		List<Event> event = es.findByAuthorId(id);
 		return event;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8358c4fe9aa6337eb58b37a7f407bc7ff9e6fcf0
 	}
 
 	@PostMapping
