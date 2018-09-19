@@ -153,6 +153,7 @@ public class UserController {
 		AppUser user = us.findOne(id);
 		return user.getInterests();
 	}
+	
 
 	@PostMapping
 	public ResponseEntity<AppUser> save(@RequestBody AppUser u) {

@@ -41,9 +41,16 @@ public class InvitationsController {
 	}
 
 	@GetMapping("event/{id}")
-	public List<Invitations> findAllInvitations(@PathVariable int id) {
+	public List<Invitations> findEventInvitations(@PathVariable int id) {
 		List<Invitations> invitations = is.findByEventId(id);
 //		return invitations.getInvitations();
+		return invitations;
+	}
+	
+	//displays all of a user's event invitations
+	@GetMapping("user/{id}")
+	public List<Invitations> findUserInvitations(@PathVariable int id) {
+		List<Invitations> invitations = is.findByUserId(id);
 		return invitations;
 	}
 

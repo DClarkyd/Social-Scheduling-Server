@@ -10,8 +10,10 @@ import com.revature.model.Invitations;
 @Repository
 public interface InvitationsRepo extends JpaRepository<Invitations, Integer> {
 
-	List<Invitations> findByeventId(int id);
+	List<Invitations> findByEventId(int id);
 	
-	List<Invitations> findByeventIdAndStatusId(int eventId, int statudId);
+	List<Invitations> findByEventIdAndStatusId(int eventId, int statudId);
+	
+	List<Invitations> findByUserId(int id);
 
 }

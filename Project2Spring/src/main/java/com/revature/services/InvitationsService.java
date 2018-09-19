@@ -23,11 +23,15 @@ public class InvitationsService {
 	}
 
 	public List<Invitations> findByEventId(int id) {
-		return ir.findByeventId(id);
+		return ir.findByEventId(id);
+	}
+	
+	public List<Invitations> findByUserId(int id) {
+		return ir.findByUserId(id);
 	}
 
 	public List<Invitations> findByEventAndStatusId(int eventId, int statusId) {
-		return ir.findByeventIdAndStatusId(eventId, statusId);
+		return ir.findByEventIdAndStatusId(eventId, statusId);
 	}
 
 	public Invitations updateStatus(int id, Invitations invitations) {
