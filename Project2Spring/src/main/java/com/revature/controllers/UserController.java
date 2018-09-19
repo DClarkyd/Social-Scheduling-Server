@@ -77,15 +77,6 @@ public class UserController {
 		return user;
 	}
 
-	// changes interest id2 at the user id
-	@Transactional
-	@CrossOrigin
-	@PatchMapping("{id}/change-interest")
-	public void updateInterest(@PathVariable int id, @RequestBody Interests interest) {
-//			AppUser user = us.removeInterestById(id, interest);
-//			AppUser user = us.findOne(id);
-//			us.findByInterestIdAndUserId();
-	}
 
 	//lets you add a friend
 	@Transactional
@@ -108,6 +99,13 @@ public class UserController {
 	@PostMapping("register")
 	public AppUser register(@RequestBody AppUser u) {
 		return us.save(u);
+	}
+	
+	//update the user
+	@CrossOrigin
+	@PostMapping("updateUser/{id}")
+	public AppUser update(@PathVariable int id, @RequestBody AppUser u) {
+		return us.updateUser(id, u);
 	}
 
 	// this finds who has a common interest

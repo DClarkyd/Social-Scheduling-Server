@@ -71,4 +71,17 @@ public class UserServices {
 		ur.save(u);
 		return u;
 	}
+	
+	//update a user
+	public AppUser updateUser(int id, AppUser u) {
+		AppUser userToUpdate = ur.getOne(id);
+		userToUpdate.setFirstName(u.getFirstName());
+		userToUpdate.setLastName(u.getLastName());
+		userToUpdate.setEmail(u.getEmail());
+		userToUpdate.setAge(u.getAge());
+		userToUpdate.setUsername(u.getUsername());
+		ur.save(userToUpdate);
+		return userToUpdate;
+	}
+	
 }

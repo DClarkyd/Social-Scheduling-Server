@@ -17,6 +17,5 @@ public interface UserRepo extends JpaRepository<AppUser, Integer>{
 
 	AppUser findByInterestsAndUsername(int id, String username);
 //	Optional<AppUser> findByFriend(int id);
-	
-//	void deleteByIdAndInterestId(int userId, int interestId);
+
 }
