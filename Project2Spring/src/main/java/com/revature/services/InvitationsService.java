@@ -30,13 +30,11 @@ public class InvitationsService {
 		return ir.findByeventIdAndStatusId(eventId, statusId);
 	}
 
+	public Invitations updateStatus(int id, Invitations invitations) {
+		Invitations i = ir.findById(id).get();
+		i.setStatusId(invitations.getStatusId());
+		ir.save(i);
+		return i;
+	}
 	
-
-//	public Attendees replaceStatus(int id, Attendees newStatus) {
-//		Attendees a = ar.findById(id).get();
-//		a.getStatusId().add(newStatus);
-//		ar.save(a);
-//		return a;
-//	}
-
 }
