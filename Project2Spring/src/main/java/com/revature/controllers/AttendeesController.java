@@ -38,7 +38,13 @@ public class AttendeesController {
 		return attendees;
 	}
 	
-	@GetMapping("acceptedDenied/{id}")
+	@GetMapping("status/{id}")
+	public List<Attendees> findAllInvitations(@PathVariable int id){
+		Attendees attendees = as.findOne(id);
+		return attendees.getInvitations();
+	}
+	
+	@GetMapping("status/{id}/{id}")
 	public List<Attendees> findAttendees(@PathVariable int id){
 		Attendees attendees = as.findOne(id);
 		return attendees.getAttendees();

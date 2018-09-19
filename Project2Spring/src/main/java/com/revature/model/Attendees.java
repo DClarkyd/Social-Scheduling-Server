@@ -35,7 +35,12 @@ public class Attendees {
 	private int statusId;
 	
 	@ManyToMany
-    @JoinTable(name = "user_has_invitations", joinColumns = @JoinColumn(name = "status_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    @JoinTable(name = "user_has_invitations", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "invitation_id"))
+    @JsonIgnore
+	private List<Attendees> invitations;
+	
+	@ManyToMany
+    @JoinTable(name = "user_has_invitations", joinColumns = @JoinColumn(name = "status_id"), inverseJoinColumns = @JoinColumn(name = "invitation_id"))
     @JsonIgnore
 	private List<Attendees> attendees;
 
@@ -44,12 +49,14 @@ public class Attendees {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Attendees(int invitationId, int eventId, int userId, int statusId, List<Attendees> attendees) {
+	public Attendees(int invitationId, int eventId, int userId, int statusId, List<Attendees> invitations,
+			List<Attendees> attendees) {
 		super();
 		this.invitationId = invitationId;
 		this.eventId = eventId;
 		this.userId = userId;
 		this.statusId = statusId;
+		this.invitations = invitations;
 		this.attendees = attendees;
 	}
 
@@ -85,6 +92,14 @@ public class Attendees {
 		this.statusId = statusId;
 	}
 
+	public List<Attendees> getInvitations() {
+		return invitations;
+	}
+
+	public void setInvitations(List<Attendees> invitations) {
+		this.invitations = invitations;
+	}
+
 	public List<Attendees> getAttendees() {
 		return attendees;
 	}
@@ -100,6 +115,7 @@ public class Attendees {
 		result = prime * result + ((attendees == null) ? 0 : attendees.hashCode());
 		result = prime * result + eventId;
 		result = prime * result + invitationId;
+		result = prime * result + ((invitations == null) ? 0 : invitations.hashCode());
 		result = prime * result + statusId;
 		result = prime * result + userId;
 		return result;
@@ -123,6 +139,11 @@ public class Attendees {
 			return false;
 		if (invitationId != other.invitationId)
 			return false;
+		if (invitations == null) {
+			if (other.invitations != null)
+				return false;
+		} else if (!invitations.equals(other.invitations))
+			return false;
 		if (statusId != other.statusId)
 			return false;
 		if (userId != other.userId)
@@ -133,9 +154,9 @@ public class Attendees {
 	@Override
 	public String toString() {
 		return "Attendees [invitationId=" + invitationId + ", eventId=" + eventId + ", userId=" + userId + ", statusId="
-				+ statusId + ", attendees=" + attendees + "]";
+				+ statusId + ", invitations=" + invitations + ", attendees=" + attendees + "]";
 	}
 	
 	
-
+	
 }
