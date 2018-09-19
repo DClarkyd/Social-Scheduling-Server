@@ -25,6 +25,7 @@ public class Friends implements Serializable {
     @Id
     @Column(name = "friend_id")
     private int friendId;
+    
     public Friends() {
         super();
         // TODO Auto-generated constructor stub

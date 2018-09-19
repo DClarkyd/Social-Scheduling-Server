@@ -47,6 +47,14 @@ public class UserController {
 		return user;
 	}
 	
+	//find id by username
+		@CrossOrigin
+		@GetMapping("{username}/find")
+		public int findByUsername(@PathVariable String username) {
+			AppUser user = us.findOne(username);
+			int userId = user.getId();
+			return userId;
+		}
 
 	//lets you add an interest
 	@Transactional
@@ -65,6 +73,15 @@ public class UserController {
 		AppUser user = us.addInvitation(id, event);
 		return user;
 	}
+	
+	// invite a user to be your friend
+		@Transactional
+		@CrossOrigin
+		@PostMapping("{id}/addFriendRequest")
+		public AppUser createFriendRequest(@PathVariable int id, @RequestBody AppUser friends) {
+			AppUser user = us.addFriendRequest(id, friends);
+			return user;
+		}
 
 	// removes interest id2 from the user id
 	@Transactional
@@ -124,7 +141,7 @@ public class UserController {
 	}
 
 	
-	//displays the interest of the user with userid id
+	//displays the interests of the user with userid id
 	@GetMapping("{id}/interests")
 	public List<Interests> findInterests(@PathVariable int id) {
 		AppUser user = us.findOne(id);

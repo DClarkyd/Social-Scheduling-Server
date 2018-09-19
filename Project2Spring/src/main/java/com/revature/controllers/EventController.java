@@ -29,33 +29,33 @@ public class EventController {
 
 	@Autowired
 	private EventServices es;
-	
-	//create an event
+
+	// create an event
 	@CrossOrigin
 	@PostMapping("create")
 	public Event create(@RequestBody Event e) {
-	return es.save(e);
+		return es.save(e);
 	}
 
-	//find all events
-		@GetMapping
-		public List<Event> findAll() {
-			System.out.println("finding all events");
-			List<Event> events = new ArrayList<>();
-			return es.findAll();
-		}
-		
-		//find event by id
-		@CrossOrigin
-		@GetMapping("{id}")
-		public Event findById(@PathVariable int id) {
-			Event event = es.findOne(id);
-			return event;
-		}
-	
-	//Find Event by Author ID
+	// find all events
+	@GetMapping
+	public List<Event> findAll() {
+		System.out.println("finding all events");
+		List<Event> events = new ArrayList<>();
+		return es.findAll();
+	}
+
+	// find event by id
+	@CrossOrigin
+	@GetMapping("{id}")
+	public Event findById(@PathVariable int id) {
+		Event event = es.findOne(id);
+		return event;
+	}
+
+	// Find Event by Author ID
 	@GetMapping("{id}/author")
-	public List<Event> eventAuthor(@PathVariable int id){
+	public List<Event> eventAuthor(@PathVariable int id) {
 		Event event = es.findOne(id);
 		return event.getEvents();
 	}
