@@ -54,10 +54,10 @@ public class EventController {
 		}
 	
 	//Find Event by Author ID
-	@GetMapping("{id}/author")
+	@GetMapping("author/{id}")
 	public List<Event> eventAuthor(@PathVariable int id){
-		Event event = es.findOne(id);
-		return event.getEvents();
+		List<Event> event = es.findByAuthorId(id);
+		return event;
 	}
 
 	@PostMapping

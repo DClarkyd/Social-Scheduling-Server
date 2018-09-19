@@ -42,18 +42,13 @@ public class Event {
 	@Column(name = "event_author_id")
 	private int authorId;
 	
-	@ManyToMany
-    @JoinTable(name = "event", joinColumns = @JoinColumn(name = "event_author_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
-    @JsonIgnore
-	private List<Event> events;
-
 	public Event() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Event(int id, String name, String eventType, String description, String startDate, String endDate,
-			String startTime, String endTime, String location, int authorId, List<Event> events) {
+			String startTime, String endTime, String location, int authorId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -65,7 +60,6 @@ public class Event {
 		this.endTime = endTime;
 		this.location = location;
 		this.authorId = authorId;
-		this.events = events;
 	}
 
 	public int getId() {
@@ -148,14 +142,6 @@ public class Event {
 		this.authorId = authorId;
 	}
 
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -165,7 +151,6 @@ public class Event {
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
 		result = prime * result + ((eventType == null) ? 0 : eventType.hashCode());
-		result = prime * result + ((events == null) ? 0 : events.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -205,11 +190,6 @@ public class Event {
 				return false;
 		} else if (!eventType.equals(other.eventType))
 			return false;
-		if (events == null) {
-			if (other.events != null)
-				return false;
-		} else if (!events.equals(other.events))
-			return false;
 		if (id != other.id)
 			return false;
 		if (location == null) {
@@ -239,8 +219,18 @@ public class Event {
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", eventType=" + eventType + ", description=" + description
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime="
-				+ endTime + ", location=" + location + ", authorId=" + authorId + ", events=" + events + "]";
+				+ endTime + ", location=" + location + ", authorId=" + authorId + "]";
 	}
+	
+	
+	
+//	@ManyToMany
+//    @JoinTable(name = "event", joinColumns = @JoinColumn(name = "event_author_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+//    @JsonIgnore
+//	private List<Event> events;
+
+	
+
 
 	
 }
