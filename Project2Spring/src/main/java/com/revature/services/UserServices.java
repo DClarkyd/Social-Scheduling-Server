@@ -84,4 +84,12 @@ public class UserServices {
 		return userToUpdate;
 	}
 	
+	//update a user's interests
+	public AppUser updateUserInterests(int id, List<Interests> interests) {
+		AppUser u = ur.getOne(id);
+		u.setInterests(interests);
+		ur.save(u);
+		return u;
+	}
+	
 }

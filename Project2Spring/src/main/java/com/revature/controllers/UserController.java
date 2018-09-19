@@ -103,9 +103,16 @@ public class UserController {
 	
 	//update the user
 	@CrossOrigin
-	@PostMapping("updateUser/{id}")
+	@PostMapping("{id}/updateUser")
 	public AppUser update(@PathVariable int id, @RequestBody AppUser u) {
 		return us.updateUser(id, u);
+	}
+	
+	//update the user's interests
+	@CrossOrigin
+	@PostMapping("{id}/updateInterests")
+	public AppUser updateInterests(@PathVariable int id, @RequestBody List<Interests> interests) {
+		return us.updateUserInterests(id, interests);
 	}
 
 	// this finds who has a common interest
