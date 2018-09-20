@@ -89,8 +89,6 @@ public class UserController {
 	@DeleteMapping("{id}/removeInterest")
 	public AppUser removeInterest(@PathVariable int id, @RequestBody Interests interest) {
 		AppUser user = us.removeUsersInterest(id, interest);
-//		AppUser user = us.findOne(id);
-//		us.findByInterestIdAndUserId();
 		return user;
 	}
 

@@ -50,7 +50,7 @@ public class AppUser {
 	private List<Event> events;
 	
 	@ManyToMany
-    @JoinTable(name = "user_has_friend_request", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
+    @JoinTable(name = "user_has_friend_requests", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
     @JsonIgnore
 	private List<AppUser> friends;
 
