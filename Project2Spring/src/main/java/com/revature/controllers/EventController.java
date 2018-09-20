@@ -3,21 +3,18 @@ package com.revature.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.model.AppUser;
 import com.revature.model.Event;
 import com.revature.model.Interests;
 import com.revature.services.EventServices;
@@ -52,12 +49,16 @@ public class EventController {
 			List<Event> events = new ArrayList<>();
 			return es.findAll();
 		}
-	
+
 	//Find Event by Author ID
 	@GetMapping("author/{id}")
 	public List<Event> eventAuthor(@PathVariable int id){
 		List<Event> event = es.findByAuthorId(id);
 		return event;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8a80400da8ee0f3c817e276f8a7aeef916e532b0
 	}
 
 	@PostMapping
