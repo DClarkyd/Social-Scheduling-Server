@@ -55,7 +55,10 @@ public class EventController {
 	public List<Event> eventAuthor(@PathVariable int id){
 		List<Event> event = es.findByAuthorId(id);
 		return event;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a80400da8ee0f3c817e276f8a7aeef916e532b0
 	}
 
 	@PostMapping
