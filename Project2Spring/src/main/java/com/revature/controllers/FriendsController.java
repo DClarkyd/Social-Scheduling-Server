@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,12 @@ import com.revature.services.UserServices;
 	    @PostMapping("create")
 	    public Friends create(@RequestBody Friends f) {
 	        return fr.save(f);
+	    }
+	    
+	    @CrossOrigin
+	    @DeleteMapping("/delete")
+	    public void deleteFriend(@PathVariable int id) {
+	    	fr.deleteById(id);
 	    }
 	}
 

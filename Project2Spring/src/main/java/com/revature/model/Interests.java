@@ -18,6 +18,7 @@ public class Interests {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "interest_id")
 	private int id;
+	
 	@Column(name = "interest_name")
 	private String interest;
 
