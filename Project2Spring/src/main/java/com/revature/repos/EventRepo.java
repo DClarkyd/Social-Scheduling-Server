@@ -11,5 +11,7 @@ import com.revature.model.Event;
 public interface EventRepo extends JpaRepository<Event, Integer>{
 
 	List<Event> findByAuthorId(int id);
+	
+	Event findByName(String name);
 
 }

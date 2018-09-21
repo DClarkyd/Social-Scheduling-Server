@@ -35,4 +35,8 @@ public class EventServices {
 		return er.findByAuthorId(id);
 	}
 	
+	public Event findOne(String name) {
+		return er.findByName(name);
+	}
+	
 }
