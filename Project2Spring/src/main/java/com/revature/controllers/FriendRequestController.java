@@ -41,14 +41,14 @@ public class FriendRequestController {
 		return requests;
 	}
 
-	@GetMapping("friend-requests/{id}")
+	@GetMapping("user/{id}")
 	public List<FriendRequests> findAllFriendRequests(@PathVariable int id) {
 		List<FriendRequests> requests = frs.findByRequestId(id);
 		return requests;
 	}
 
 	@GetMapping("friend/{friendId}/status/{statusId}")
-	public List<FriendRequests> findAttendees(@PathVariable int friendId, @PathVariable int statusId) {
+	public List<FriendRequests> findRequestees(@PathVariable int friendId, @PathVariable int statusId) {
 		List<FriendRequests> requests = frs.findByFriendAndStatusId(friendId, statusId);
 		return requests;
 	}
@@ -62,4 +62,10 @@ public class FriendRequestController {
 		return status;
 	}
 
+	@CrossOrigin
+	@GetMapping("friend/{friendId}/fr/{userId}")
+	public List<FriendRequests> findByFriendAndUserId(@PathVariable int friendId,  @PathVariable int userId) {
+		List<FriendRequests> requests = frs.findByFriendIdAndUserId(friendId, userId);
+		return requests;
+	}
 }

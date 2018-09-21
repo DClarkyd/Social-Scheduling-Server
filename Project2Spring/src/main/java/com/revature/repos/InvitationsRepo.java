@@ -16,4 +16,6 @@ public interface InvitationsRepo extends JpaRepository<Invitations, Integer> {
 	
 	List<Invitations> findByUserId(int id);
 
+	Invitations findByEventIdAndUserId(int eventId, int userId);
+
 }

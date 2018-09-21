@@ -38,4 +38,8 @@ public class FriendRequestServices {
 		return frr.findByfriendId(id);
 	}
 
+	public List<FriendRequests> findByFriendIdAndUserId( int friendId, int userId) {
+		return frr.findByfriendIdAndUserId(friendId, userId);
+	}
+
 }

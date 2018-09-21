@@ -14,6 +14,8 @@ public interface FriendRequestRepo extends JpaRepository<FriendRequests, Integer
 
 	List<FriendRequests> findByfriendId(int id);
 
+	List<FriendRequests> findByfriendIdAndUserId(int friendId, int userId);
+
 	
 
 }
