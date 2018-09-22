@@ -1,7 +1,14 @@
 Manifest-Version: 1.0
 Implementation-Title: spring-boot
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: Revature 4
+=======
+<<<<<<< HEAD
+Built-By: jrod_
+=======
+>>>>>>> 36c017f227705a4512349235a68cc0e9e8eaf42f
+>>>>>>> c35f65e568a1c5bb72dd779f7a1041b9608f3fc0
 Implementation-Vendor-Id: revature
 Build-Jdk: 1.8.0_181
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
