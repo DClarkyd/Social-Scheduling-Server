@@ -41,6 +41,8 @@ public class Event {
 	private String location;
 	@Column(name = "event_author_id")
 	private int authorId;
+	@Column(name = "event_status")
+	private int visibility;
 	
 	public Event() {
 		super();
@@ -48,7 +50,7 @@ public class Event {
 	}
 
 	public Event(int id, String name, String eventType, String description, String startDate, String endDate,
-			String startTime, String endTime, String location, int authorId) {
+			String startTime, String endTime, String location, int authorId, int visibility) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -60,6 +62,7 @@ public class Event {
 		this.endTime = endTime;
 		this.location = location;
 		this.authorId = authorId;
+		this.visibility = visibility;
 	}
 
 	public int getId() {
@@ -142,6 +145,14 @@ public class Event {
 		this.authorId = authorId;
 	}
 
+	public int getVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(int visibility) {
+		this.visibility = visibility;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -156,6 +167,7 @@ public class Event {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
+		result = prime * result + visibility;
 		return result;
 	}
 
@@ -212,6 +224,8 @@ public class Event {
 				return false;
 		} else if (!startTime.equals(other.startTime))
 			return false;
+		if (visibility != other.visibility)
+			return false;
 		return true;
 	}
 
@@ -219,15 +233,8 @@ public class Event {
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", eventType=" + eventType + ", description=" + description
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime="
-				+ endTime + ", location=" + location + ", authorId=" + authorId + "]";
+				+ endTime + ", location=" + location + ", authorId=" + authorId + ", visibility=" + visibility + "]";
 	}
-	
-	
-	
-//	@ManyToMany
-//    @JoinTable(name = "event", joinColumns = @JoinColumn(name = "event_author_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
-//    @JsonIgnore
-//	private List<Event> events;
 
 	
 
