@@ -41,6 +41,13 @@ public class InvitationsController {
 		return invitations;
 	}
 	
+//	@CrossOrigin
+//	@GetMapping("{id}")
+//	public Invitations findByUserId(@PathVariable int id) {
+//		Invitations invitations = is.findByUserIdAndEventId(id);
+//		return invitations;
+//	}
+	
 	@CrossOrigin
 	@GetMapping("event/{id}")
 	public List<Invitations> findEventInvitations(@PathVariable int id) {

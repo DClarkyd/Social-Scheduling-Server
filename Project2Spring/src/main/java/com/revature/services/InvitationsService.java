@@ -40,5 +40,9 @@ public class InvitationsService {
 		ir.save(i);
 		return i;
 	}
+
+	public Invitations findByUserIdAndEventId(int eventId, int userId) {
+		return ir.findByEventIdAndUserId(eventId, userId);
+	}
 	
 }
